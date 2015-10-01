@@ -12,7 +12,6 @@ Gem::Specification.new do |s|
 
   s.files = `git ls-files`.split("\n")
 
-  s.add_dependency "rack", "~> 1.6.4"
-  s.add_development_dependency "bundler", "~> 1.10"
-  s.add_development_dependency "cutest", "~> 1.2"
+  s.add_dependency "rack", "~> 1.6"
+  s.add_development_dependency "cutest", "1.2.2"
 end
