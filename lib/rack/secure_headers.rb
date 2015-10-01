@@ -24,7 +24,7 @@ module Rack
     def call(env)
       tuple = @app.call(env)
       tuple[1].merge!(@headers)
-      
+
       return tuple
     end
 
@@ -45,10 +45,10 @@ module Rack
       return headers
     end
 
-    def hsts_header(opts)
-      header = "max-age=#{opts.fetch(:max_age)}"
-      header << "; includeSubdomains" if opts[:include_subdomains]
-      header << "; preload" if opts[:preload]
+    def hsts_header(options)
+      header = sprintf("max-age=%s", options.fetch(:max_age))
+      header << "; includeSubdomains" if options[:include_subdomains]
+      header << "; preload" if options[:preload]
 
       return header
     end
