@@ -22,10 +22,11 @@ module Rack
     end
 
     def call(env)
-      tuple = @app.call(env)
-      tuple[1].merge!(@headers)
-
-      return tuple
+      return @app.call(env).tap do |_, headers, _|
+        @headers.each do |key, value|
+          headers[key] ||= value
+        end
+      end
     end
 
     private
