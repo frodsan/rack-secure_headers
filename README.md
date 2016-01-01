@@ -1,4 +1,4 @@
-rack-secure_headers
+rack-secure_headers [![Build Status](https://travis-ci.org/frodsan/rack-secure_headers.svg)](https://travis-ci.org/frodsan/rack-secure_headers)
 -------------------
 
 Security related HTTP headers for Rack applications.
@@ -7,6 +7,27 @@ Description
 -----------
 
 Implements OWASP's [List of useful HTTP headers][owasp].
+
+Installation
+------------
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem "rack-secure_headers"
+```
+
+And then execute:
+
+```
+$ bundle
+```
+
+Or install it yourself as:
+
+```
+$ gem install rack-secure_headers
+```
 
 Usage
 -----
@@ -96,21 +117,36 @@ TODO
 Contributing
 ------------
 
-- Fork the project.
-- Use `make install` to install dependencies.
-- Use `make test` to run the test suite.
-- Create a pull request with your changes.
-
-Installation
-------------
+Fork the project with:
 
 ```
-$ gem install rack-secure_headers
+$ git clone git@github.com:frodsan/rack-secure_headers.git
 ```
+
+To install dependencies, use:
+
+```
+$ bundle install
+```
+
+To run the test suite, do:
+
+```
+$ rake test
+```
+
+For bug reports and pull requests use [GitHub][issues].
+
+License
+-------
+
+This gem is released under the [MIT License][mit].
 
 [clickjacking]: https://www.owasp.org/index.php/Clickjacking
 [hsts-form]: https://hstspreload.appspot.com/
+[issues]: https://github.com/frodsan/rack-secure_headers/issues
 [mime-sniffing]: https://msdn.microsoft.com/library/gg622941(v=vs.85).aspx
+[mit]: http://www.opensource.org/licenses/MIT
 [owasp]: https://www.owasp.org/index.php/List_of_useful_HTTP_headers
 [pcdp]: https://www.adobe.com/devnet/adobe-media-server/articles/cross-domain-xml-for-streaming.html
 [xss]: https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
