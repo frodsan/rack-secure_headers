@@ -16,5 +16,5 @@ Gem::Specification.new do |s|
   s.add_dependency "rack", "~> 1.6"
   s.add_development_dependency "minitest", "~> 5.8"
   s.add_development_dependency "minitest-sugar", "~> 2.1"
-  s.add_development_dependency "rake", "~> 10.0"
+  s.add_development_dependency "rake", "~> 11.0"
 end
