@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 require_relative "helper"
 
 class App
-  def call(env)
-    return [200, {}, [""]]
+  def call(_)
+    [200, {}, [""]]
   end
 end
 
@@ -20,7 +21,7 @@ class SecureHeadersTest < Minitest::Test
       "X-Frame-Options" => "SAMEORIGIN",
       "X-Permitted-Cross-Domain-Policies" => "none",
       "X-XSS-Protection" => "1; mode=block",
-      "Strict-Transport-Security" => "max-age=31536000; includeSubdomains",
+      "Strict-Transport-Security" => "max-age=31536000; includeSubdomains"
     }
 
     assert_equal expected, headers
@@ -33,7 +34,7 @@ class SecureHeadersTest < Minitest::Test
     middleware = Rack::SecureHeaders.new(@app, options)
     headers = middleware.call({})[1]
 
-    assert_equal Hash.new, headers
+    assert headers.empty?
   end
 
   test "hsts options" do

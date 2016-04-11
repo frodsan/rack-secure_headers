@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "rack"
 
 module Rack
@@ -8,7 +9,7 @@ module Rack
       x_frame_options: "SAMEORIGIN",
       x_permitted_cross_domain_policies: "none",
       x_xss_protection: "1; mode=block"
-    }
+    }.freeze
 
     def initialize(app, options = {})
       options = DEFAULTS.merge(options)
@@ -22,7 +23,7 @@ module Rack
     end
 
     def call(env)
-      return @app.call(env).tap do |_, headers, _|
+      @app.call(env).tap do |_, headers, _|
         @headers.each do |key, value|
           headers[key] ||= value
         end
@@ -35,23 +36,24 @@ module Rack
       headers = {
         "X-Content-Type-Options" => options[:x_content_type_options],
         "X-Frame-Options" => options[:x_frame_options],
-        "X-Permitted-Cross-Domain-Policies" => options[:x_permitted_cross_domain_policies],
-        "X-XSS-Protection" => options[:x_xss_protection],
+        "X-Permitted-Cross-Domain-Policies" =>
+          options[:x_permitted_cross_domain_policies],
+        "X-XSS-Protection" => options[:x_xss_protection]
       }
 
       headers.each do |header, value|
         headers.delete(header) if value.nil?
       end
 
-      return headers
+      headers
     end
 
     def hsts_header(options)
-      header = sprintf("max-age=%s", options.fetch(:max_age))
+      header = format("max-age=%s", options.fetch(:max_age))
       header << "; includeSubdomains" if options[:include_subdomains]
       header << "; preload" if options[:preload]
 
-      return header
+      header
     end
   end
 end
