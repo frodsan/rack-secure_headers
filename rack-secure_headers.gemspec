@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.summary     = "Security related HTTP headers for Rack applications"
   s.description = s.summary
   s.author      = "Francesco Rodríguez"
-  s.email       = "frodsan@protonmail.ch"
+  s.email       = "hello@frodsan.com"
   s.homepage    = "https://github.com/frodsan/rack-secure_headers"
   s.license     = "MIT"
 
