@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "rack"
 
 module Rack
@@ -41,10 +42,7 @@ module Rack
         "X-XSS-Protection" => options[:x_xss_protection]
       }
 
-      headers.each do |header, value|
-        headers.delete(header) if value.nil?
-      end
-
+      headers.reject! { |_, v| v.nil? }
       headers
     end
 
