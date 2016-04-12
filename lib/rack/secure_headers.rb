@@ -47,7 +47,7 @@ module Rack
     end
 
     def hsts_header(options)
-      header = format("max-age=%s", options.fetch(:max_age))
+      header = sprintf("max-age=%s", options.fetch(:max_age))
       header << "; includeSubdomains" if options[:include_subdomains]
       header << "; preload" if options[:preload]
 
