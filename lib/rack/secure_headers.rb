@@ -5,7 +5,7 @@ require "rack"
 module Rack
   class SecureHeaders
     DEFAULTS = {
-      hsts: { max_age: "31536000", include_subdomains: true },
+      hsts: {max_age: "31536000", include_subdomains: true},
       x_content_type_options: "nosniff",
       x_frame_options: "SAMEORIGIN",
       x_permitted_cross_domain_policies: "none",

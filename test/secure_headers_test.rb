@@ -39,12 +39,12 @@ class SecureHeadersTest < Minitest::Test
   end
 
   test "hsts options" do
-    middleware = Rack::SecureHeaders.new(@app, hsts: { max_age: 1 })
+    middleware = Rack::SecureHeaders.new(@app, hsts: {max_age: 1})
     headers = middleware.call({})[1]
 
     assert_equal "max-age=1", headers["Strict-Transport-Security"]
 
-    options = { max_age: 1, include_subdomains: true, preload: true }
+    options = {max_age: 1, include_subdomains: true, preload: true}
     middleware = Rack::SecureHeaders.new(@app, hsts: options)
     headers = middleware.call({})[1]
 

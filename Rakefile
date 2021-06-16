@@ -2,6 +2,7 @@
 
 require "bundler/setup"
 require "rake/testtask"
+require "standard/rake"
 
 task default: :test
 
